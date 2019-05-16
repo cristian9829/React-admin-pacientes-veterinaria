@@ -3,8 +3,8 @@ import Header from "./componentes/Header";
 import AgregarCita from './componentes/AgregarCita'
 
 class App extends React.Component {
-  crearCita = () =>{
-    
+  crearCita = (cita) =>{
+    console.log(cita)
   }
 
   render(){
