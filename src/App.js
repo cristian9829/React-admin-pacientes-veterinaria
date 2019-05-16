@@ -4,7 +4,7 @@ import AgregarCita from './componentes/AgregarCita'
 
 class App extends React.Component {
   crearCita = () =>{
-    console.log("Desde app.js")
+    
   }
 
   render(){
