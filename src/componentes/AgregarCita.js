@@ -15,7 +15,6 @@ export default class AgregarCita extends Component{
 
   crearNuevaCita = e =>{
     e.preventDefault()
-
     const mascota = this.nombreMascotaRef.current.value,
           propietario = this.nombrePropietarioRef.current.value,
           fecha = this.fechaRef.current.value,
@@ -30,9 +29,13 @@ export default class AgregarCita extends Component{
       hora : hora,
       sintomas: sintomas
     }
-    
-      
+
+    //Se envia el objeto al componente App para actulizar el state
     this.props.crearCita(nuevaCita);
+
+    //Resetiar Formulario
+    e.currentTarget.reset()
+
 
   }
 

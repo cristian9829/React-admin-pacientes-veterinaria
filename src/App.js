@@ -3,8 +3,16 @@ import Header from "./componentes/Header";
 import AgregarCita from './componentes/AgregarCita'
 
 class App extends React.Component {
-  crearCita = (cita) =>{
-    console.log(cita)
+  state = {
+    citas: []
+  }
+
+  crearCita = (nuevaCita) =>{
+    const citas = [...this.state.citas, nuevaCita];
+
+    this.setState({
+      citas: citas
+    })
   }
 
   render(){
