@@ -9,9 +9,9 @@ export default class AgregarCita extends Component{
   horaRef = React.createRef();
   sintomasRef = React.createRef();
   
-  state = {}
-
-
+  state = {
+    error: false
+  }
 
   crearNuevaCita = e =>{
     e.preventDefault()
@@ -21,25 +21,35 @@ export default class AgregarCita extends Component{
           hora = this.horaRef.current.value,
           sintomas = this.sintomasRef.current.value;
 
-    const nuevaCita = {
-      id: uuid(),
-      mascota: mascota,
-      propietario: propietario,
-      fecha : fecha,
-      hora : hora,
-      sintomas: sintomas
+    if(mascota === '' || propietario === '' || fecha === '' || hora === '' || sintomas === ''){
+      this.setState({
+        error: true
+      })
+    }else{
+      const nuevaCita = {
+        id: uuid(),
+        mascota: mascota,
+        propietario: propietario,
+        fecha : fecha,
+        hora : hora,
+        sintomas: sintomas
+      }
+  
+      //Se envia el objeto al componente App para actulizar el state
+      this.props.crearCita(nuevaCita);    
+
+      //Resetiar Formulario
+      e.currentTarget.reset()
+
+      //Eliminar error
+      this.setState({
+        error: false
+      })
     }
-
-    //Se envia el objeto al componente App para actulizar el state
-    this.props.crearCita(nuevaCita);
-
-    //Resetiar Formulario
-    e.currentTarget.reset()
-
-
   }
 
   render(){
+    const existeError = this.state.error;
     return(
       <div className="card mt-5">
         <div className="card-body">
@@ -83,6 +93,7 @@ export default class AgregarCita extends Component{
               </div>
             </div>
           </form>
+          { existeError ? <div className="aler alert-danger text-center text-white"><p className="lead">Todos los campos son obligatorios</p></div> : '' }
         </div>
       </div>
     )
