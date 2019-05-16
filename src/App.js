@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from "./componentes/Header";
+import AgregarCita from './componentes/AgregarCita'
 
 function App() {
   return (
@@ -7,6 +8,11 @@ function App() {
       <Header
         titulo={'Administrador de Pacientes de Veterinaria'}
       />
+      <div className="row">
+        <div className="col-md-6">
+          <AgregarCita/>
+        </div>
+      </div>
     </div>
   );
 }
