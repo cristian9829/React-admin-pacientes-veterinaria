@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "./componentes/Header";
 import AgregarCita from './componentes/AgregarCita'
-import Listado from './componentes/ListaCitas';
+import ListadoCitas from './componentes/ListaCitas';
 
 class App extends React.Component {
   state = {
@@ -58,7 +58,7 @@ class App extends React.Component {
             />
           </div>
           <div className="col-md-6">
-            <Listado
+            <ListadoCitas
               citas = {this.state.citas}
               borrarCita = {this.borrarCita}
             />
